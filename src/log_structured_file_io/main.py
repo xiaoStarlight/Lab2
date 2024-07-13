@@ -23,7 +23,6 @@ def main():
         data = json.load(f)
     if args.command == 'set':
         data[args.key] = args.value
-        
     elif args.command == 'get':
         value = data.get(args.key)
         if value is None:
@@ -33,7 +32,6 @@ def main():
     elif args.command == 'del':
         if args.key in data:
             del data[args.key]
-            print(f'Key "{args.key}" deleted')
         else:
             print('Key not found')
     with open('./data/store.kv', "w") as f:
