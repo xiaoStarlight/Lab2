@@ -19,6 +19,9 @@ def main():
     arg_parser_del.add_argument('key', type=str, help='Key')
 
     args = arg_parser.parse_args()
+
+    with open('./data/store.kv', 'w') as file:
+        file.write('{}')
     with open('./data/store.kv', 'r') as f:
         data = json.load(f)
     if args.command == 'set':
