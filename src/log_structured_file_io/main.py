@@ -23,7 +23,7 @@ def main():
         data = json.load(f)
     if args.command == 'set':
         data[args.key] = args.value
-        print(f'Key "{args.key}" set to "{args.value}"')
+        
     elif args.command == 'get':
         value = data.get(args.key)
         if value is None:
