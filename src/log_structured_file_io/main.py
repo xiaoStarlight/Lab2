@@ -1,6 +1,9 @@
 # 文件名: src/log_structured_file_io/main.py
 import argparse
 import json
+import os
+
+
 def main():
     arg_parser = argparse.ArgumentParser(description='Log structured file I/O')
     subparsers = arg_parser.add_subparsers(dest='command')
@@ -19,9 +22,11 @@ def main():
     arg_parser_del.add_argument('key', type=str, help='Key')
 
     args = arg_parser.parse_args()
+    filename = './data/store.kv'
+    if not os.path.exists(filename):
+        with open(filename, 'w', encoding='utf-8') as file:
+            file.write('{}')
 
-    with open('./data/store.kv', 'w') as file:
-        file.write('{}')
     with open('./data/store.kv', 'r') as f:
         data = json.load(f)
     if args.command == 'set':
